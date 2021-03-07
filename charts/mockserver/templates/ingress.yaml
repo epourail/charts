@@ -1,10 +1,11 @@
 {{- if .Values.ingress.enabled -}}
+{{- $fullName := include "chart.fullname" . -}}
 {{- $servicePort := .Values.service.port -}}
 {{- $ingressPath := .Values.ingress.path -}}
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: {{ template "chart.fullname" . }}
+  name: {{ $fullName }}
   labels:
     app: {{ template "chart.name" . }}
     chart: {{ template "chart.name_version" . }}
